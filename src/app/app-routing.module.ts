@@ -12,6 +12,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children : [
       { path:'',  redirectTo: '/home',  pathMatch: 'full' },
+      
       { 
         path:'home', 
         loadChildren : () => import('./home/home.module').then( m => m.HomeModule)      
@@ -25,6 +26,11 @@ const routes: Routes = [
         //canActivate : [ AdminGuard ],
         loadChildren : () => import('./contact/contact.module').then( m => m.ContactModule)        
       },
+      { 
+        path:'order', 
+        //canActivate : [ AdminGuard ],
+        loadChildren : () => import('./order/order.module').then( m => m.OrderModule)        
+      },
       
     ]
   },  
@@ -33,7 +39,20 @@ const routes: Routes = [
     //component: DemoComponent
     loadChildren: () => import('./demo/demo.module').then( m => m.DemoModule)
   },
-  { path: '**', component: PageNotFoundComponent}
+  { 
+    path: 'admin',
+    canActivate : [ AdminGuard ],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'auth',    
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  { path:'',  redirectTo: '/home',  pathMatch: 'full' },
+  { 
+    path: '**', 
+    component: PageNotFoundComponent
+  }
   
 ];
 

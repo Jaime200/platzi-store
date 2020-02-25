@@ -1,0 +1,47 @@
+<mat-horizontal-stepper >
+    <mat-step>
+        <ng-template matStepLabel>Productos seleccionados</ng-template>
+        <div *ngIf="(products$ | async | groupProducts) as productsSubs" >
+        
+            
+        
+        <p *ngIf="productsSubs.length === 0">No hay productos seleccionados</p>
+        
+        <div class="row" *ngFor="let product of productsSubs" >
+        <!-- <pre>{{productsSubs | json}}</pre> -->
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <div class="box">
+                    <img class="image" [src]="product.product.image" alt="Imagen">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <div class="box">
+                   {{product.product.title}}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <div class="box">
+                   {{product.product.price}}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <div class="box">
+                   {{product.quantity}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Datos personales</ng-template>
+        <p>Contenido</p>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Pago</ng-template>
+        <p>Contenido</p>
+    </mat-step>
+
+</mat-horizontal-stepper>
+

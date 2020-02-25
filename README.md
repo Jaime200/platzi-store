@@ -36,3 +36,7 @@ ng add @angular/material
 ng update @angular/core @angular/cli
 ng update @angular/material
  ```
+
+ ## Material icons
+ 
+ https://material.io/resources/icons/
